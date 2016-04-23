@@ -19,7 +19,9 @@
     "body-parser": "^1.9.0",
     "restify": "*",
     "azure": "*",
-    "lodash": "*"
+    "lodash": "*",
+    "watson-developer-cloud":"*",
+    "request": "*"
   },
   "devDependencies": {
     "tape": "^3.0.0",
