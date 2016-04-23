@@ -1,31 +1,29 @@
  'use strict';
 
 var port = process.env.PORT || 8000;
+var restify = require('restify');
+var routes = require('./routes');
 
- var http = require('http');
- var express = require('express');
- var bodyParser = require('body-parser');
- var swaggerize = require('swaggerize-express');
- var swaggerUi = require('swaggerize-ui'); // change one
- var path = require('path');
 
- var app = express();
+function setup(server) {
+    server.use(restify.acceptParser(server.acceptable));
+    server.use(restify.bodyParser());
+    server.use(restify.queryParser());
 
- var server = http.createServer(app);
+    routes(server);
+}
 
- app.use(bodyParser.json());
+function start(server) {
+    server.listen(port);
+}
 
- app.use(swaggerize({
-     api: path.resolve('./config/api.json'), // change two
-     handlers: path.resolve('./handlers'),
-     docspath: '/swagger/docs/v1' // change three
- }));
+function init(server) {
+    if (!server) {
+        server = restify.createServer();
+    }
 
- // change four
- app.use('/swagger', swaggerUi({
-   docs: '/swagger/docs/v1'  
- }));
+    setup(server);
+    start(server);
+}
 
- server.listen(port, function () {
-     app.setHost(undefined); // change five
- });
+init();
