@@ -22,7 +22,7 @@
     "lodash": "*",
     "watson-developer-cloud":"*",
     "request": "*",
-    "dateFormat": "*"
+    "dateformat": "*"
   },
   "devDependencies": {
     "tape": "^3.0.0",
