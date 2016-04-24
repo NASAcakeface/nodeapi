@@ -21,7 +21,8 @@
     "azure": "*",
     "lodash": "*",
     "watson-developer-cloud":"*",
-    "request": "*"
+    "request": "*",
+    "dateFormat": "*"
   },
   "devDependencies": {
     "tape": "^3.0.0",
